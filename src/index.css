@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap");
 
+html,
 body {
   box-sizing: border-box;
   font-family: Muli, sans-serif;
   text-decoration: none;
   padding: 0;
+  height: 100%;
   margin: 0;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
 }

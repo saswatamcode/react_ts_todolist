@@ -46,18 +46,41 @@ const AddButton: StyledComponent<"button", never> = styled.button`
   }
 `;
 
+const ToDo: StyledComponent<"div", never> = styled.div`
+  background: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 1rem;
+  padding: 2rem;
+  position: relative;
+  width: 70%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+`;
+
 const ToDoList: React.FC = () => {
   const [todos, setTodos] = useState<Array<String>>([]);
-  const [todoInput, setTodoinput] = useState<String>('');
+  const [todoInput, setTodoinput] = useState<String>("");
 
   const addTask = () => {
-    setTodos(oldTodos => [...oldTodos, todoInput]);
-  }
+    setTodos((oldTodos) => [...oldTodos, todoInput]);
+    setTodoinput("");
+  };
 
   return (
     <ToDoContainer>
-      <ToDoInput onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTodoinput(e.target.value)}></ToDoInput>
+      <ToDoInput
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setTodoinput(e.target.value)
+        }
+      ></ToDoInput>
+
       <AddButton onClick={addTask}>+ Add a task </AddButton>
+
+      {todos.map((todo: String): JSX.Element | undefined => {
+        if (todo !== "") {
+          return <ToDo>{todo}</ToDo>;
+        }
+      })}
     </ToDoContainer>
   );
 };
