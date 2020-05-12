@@ -51,7 +51,7 @@ const ToDoList: React.FC = () => {
   const [todoInput, setTodoinput] = useState<String>('');
 
   const addTask = () => {
-      
+    setTodos(oldTodos => [...oldTodos, todoInput]);
   }
 
   return (
